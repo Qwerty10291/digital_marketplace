@@ -1,0 +1,21 @@
+version: "3"
+services:
+  db:
+    image: mariadb
+    environment:
+      - MARIADB_ROOT_PASSWORD=root
+      - MARIADB_DATABASE=shop
+    ports:
+      - 3306:3306
+    networks:
+      - mydb
+  server:
+    image: trafex/php-nginx
+    ports:
+      - 80:8080
+    volumes:
+      - ./files:/var/www/html
+    networks:
+      - mydb
+networks:
+  mydb:
