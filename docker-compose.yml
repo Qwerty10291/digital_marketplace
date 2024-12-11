@@ -12,7 +12,7 @@ services:
   server:
     image: trafex/php-nginx
     ports:
-      - 80:8080
+      - 0.0.0.0:5050:8080
     volumes:
       - ./files:/var/www/html
     networks:

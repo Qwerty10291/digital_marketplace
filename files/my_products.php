@@ -54,7 +54,7 @@ $products_result = $stmt->get_result();
 <body class="bg-gray-100">
 
     <header class="bg-blue-600 text-white p-4 flex justify-between items-center">
-        <h1 class="text-2xl">Marketplace</h1>
+        <h1 class="text-2xl">DigitalMarketplace</h1>
         <div>
             <span class="mr-4">Hello, <?= htmlspecialchars($user['name']) ?>!</span>
             <a href="index.php" class="mr-4">Home</a>

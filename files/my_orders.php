@@ -35,7 +35,7 @@ $stmt->close();
 
 <body class="bg-gray-100">
     <header class="bg-blue-600 text-white p-4 flex justify-between items-center">
-        <h1 class="text-2xl"><a href="index.php">Marketplace</a></h1>
+        <h1 class="text-2xl"><a href="index.php">DigitalMarketplace</a></h1>
         <div>
             <span class="mr-4">Hello, <?= htmlspecialchars($user['name']) ?>!</span>
             <a href="my_orders.php" class="mr-4">My Orders</a>

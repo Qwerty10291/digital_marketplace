@@ -24,12 +24,3 @@ if ($user !== null) {
     $_SESSION['user']['balance'] = $result->fetch_assoc()['balance'];
     $stmt->close();
 }
-
-// if (isset($_SESSION['success'])) {
-//     echo '<div class="bg-green-500 text-white p-4">' . $_SESSION['success'] . '</div>';
-//     unset($_SESSION['success']);
-// }
-// if (isset($_SESSION['error'])) {
-//     echo '<div class="bg-red-500 text-white p-4">' . $_SESSION['error'] . '</div>';
-//     unset($_SESSION['error']);
-// }

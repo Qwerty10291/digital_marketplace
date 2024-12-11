@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bind_param("ssss", $name, $email, $password, $role);
 
         if ($stmt->execute()) {
-            $_SESSION['user'] = ['name' => $name, 'email' => $email, 'role' => $role];
+            $_SESSION['user'] = ['name' => $name, 'email' => $email, 'role' => $role, 'id' => $conn->insert_id];
             header("Location: index.php");
             exit();
         } else {
@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <form action="register.php" method="post">
             <div class="mb-4">
                 <label for="name" class="block text-gray-700">Name</label>
-                <input type="text" name="name" id="name" class="w-full border-gray-300 rounded-md" required>
+                <input type="text" minlength="3" name="name" id="name" class="w-full border-gray-300 rounded-md" required>
             </div>
             <div class="mb-4">
                 <label for="email" class="block text-gray-700">Email</label>
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <div class="mb-4">
                 <label for="password" class="block text-gray-700">Password</label>
-                <input type="password" name="password" id="password" class="w-full border-gray-300 rounded-md" required>
+                <input type="password" minlength="8" name="password" id="password" class="w-full border-gray-300 rounded-md" required>
             </div>
             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Register</button>
         </form>

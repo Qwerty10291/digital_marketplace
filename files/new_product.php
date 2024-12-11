@@ -19,10 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $description = $_POST['description'];
     $price = $_POST['price'];
-
-    $sql = "INSERT INTO products (user_id, name, description, price) VALUES (?, ?, ?, ?)";
+    $category_id = $_POST['category_id'];
+    $sql = "INSERT INTO products (user_id, category_id, name, description, price) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("issd", $user["id"], $name, $description, $price);
+    $stmt->bind_param("iissd", $user["id"], $category_id, $name, $description, $price);
     $stmt->execute();
 
     header("Location: my_products.php");
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="bg-gray-100">
 
 <header class="bg-blue-600 text-white p-4 flex justify-between items-center">
-    <h1 class="text-2xl">Marketplace</h1>
+    <h1 class="text-2xl">DigitalMarketplace</h1>
     <div>
         <span class="mr-4">Hello, <?= htmlspecialchars($user['name']) ?>!</span>
         <a href="index.php" class="mr-4">Home</a>
@@ -64,10 +64,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="price" class="block text-gray-700 font-bold mb-2">Price:</label>
             <input type="number" id="price" name="price" step="0.01" min="0" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
         </div>
+        <div class="mb-4">
+            <label for="category_name" class="block text-gray-700 font-bold mb-2">Category:</label>
+            <input type="text" id="category_name" name="category_name" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <input type="hidden" id="category_id" name="category_id">
+            <div id="category-results" class="bg-white border border-gray-300 mt-1 rounded shadow"></div>
+        </div>
         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create</button>
-        <a href="seller_products.php" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Cancel</a>
+        <a href="my_products.php" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Cancel</a>
     </form>
 </div>
-
+<script src="search_categories.js"></script>
 </body>
 </html>
